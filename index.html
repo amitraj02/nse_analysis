@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading System - Master Frame</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/index.css">
+</head>
+
+<body>
+
+    <!-- 1. Top Header -->
+    <header class="top-header">
+        <div class="header-logo">
+            <span>⚡</span> QUANTUM TRADING
+        </div>
+        <div class="header-controls">
+            <span id="live-time">Loading Time...</span>
+            <span
+                style="background: rgba(255,255,255,0.1); padding: 0.4rem 1rem; border-radius: 20px; color: var(--text-main);">Demo
+                Mode</span>
+        </div>
+    </header>
+
+    <div class="layout-middle">
+
+        <!-- 2. Left Side Menu -->
+        <aside class="left-sidebar">
+            <div class="sidebar-title">Navigation</div>
+
+            <a href="manue.html" target="content_frame" class="nav-item active" onclick="setActive(this)">
+                <span class="nav-icon">🏠</span> Home Dashboard
+            </a>
+
+            <a href="Trade_Setup.html" target="content_frame" class="nav-item" onclick="setActive(this)">
+                <span class="nav-icon">📊</span> Trade Setup
+            </a>
+
+            <a href="myCode_Help.html" target="content_frame" class="nav-item" onclick="setActive(this)">
+                <span class="nav-icon">💻</span> Code Dictionary
+            </a>
+            <a href="Data_Base.html" target="content_frame" class="nav-item" onclick="setActive(this)">
+                <span class="nav-icon">💾</span> DataBase
+            </a>
+
+            <!-- You can add more links here as your project grows -->
+        </aside>
+
+        <!-- 3. Main Body (Iframe) -->
+        <main class="main-body">
+            <!-- This iframe loads the pages clicked in the sidebar without refreshing the master frame -->
+            <iframe name="content_frame" src="manue.html" title="Main Content Area"></iframe>
+        </main>
+
+    </div>
+
+    <!-- 4. Footer -->
+    <footer class="footer">
+        <div style="display: flex; align-items: center;">
+            <span class="status-dot"></span> All Systems Operational &nbsp;|&nbsp; Local Environment
+        </div>
+    </footer>
+
+    <!-- Small script to handle active states on the sidebar and live clock -->
+    <script src="JS/index.js"></script>
+</body>
+
+</html>

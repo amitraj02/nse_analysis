@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Database - 2026 Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/database.css">
+    <script src="https://unpkg.com/lightweight-charts@4.1.1/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+
+<body>
+    <div class="calendar-container">
+        <div class="title_fixed_display_position" style="height: 80px; position: relative;">
+            <button onclick="window.top.location.href='index.html'" style="position: absolute; left: 20px; top: 20px; background: rgba(255,255,255,0.1); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">🏠 Home</button>
+            <h1>2026 Trading Journal Database</h1>
+            <p class="subtitle">Select a date to view the daily chart and trade setup image</p>
+        </div>
+
+        <div id="calendar-grid" class="months-grid">
+            <!-- Calendar generated automatically by database.js -->
+            <!-- what is this area showing ...! -->
+        </div>
+    </div>
+
+    <!-- Modal Popup for Date Details -->
+    <div id="date-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2 id="modal-date-title">Date</h2>
+            <h4 id="modal-day-subtitle" style="color: var(--text-muted); margin-top: -10px;">Day</h4>
+
+            <div class="modal-body">
+                <div class="info-row">
+                    <span>Trading Holiday:</span>
+                    <span id="modal-holiday-status" class="status-badge">No</span>
+                </div>
+
+                <div class="market-stats">
+                    <div class="stat-box">
+                        <h5>Nifty 50</h5>
+                        <p id="modal-nifty">--</p>
+                        <button class="chart_btn" onclick="displayNiftyHOLClist()">show HOLC </button>
+                        <button class="chart_btn" onclick="displayNiftyChart()">show Chart</button>
+                        <button class="chart_btn" onclick="displayAnalysisPage()">Analysis Page</button>
+                    </div>
+                    <div class="stat-box">
+                        <h5>Bank Nifty</h5>
+                        <p id="modal-banknifty">--</p>
+                        <button class="chart_btn" onclick="alert('Chart Viewer functionality coming soon!')">showing
+                            Chart</button>
+                    </div>
+                    <div class="stat-box">
+                        <h5>Sensex</h5>
+                        <p id="modal-sensex">--</p>
+                        <button class="chart_btn" onclick="alert('Chart Viewer functionality coming soon!')">showing
+                            Chart</button>
+                    </div>
+                </div>
+
+                <!-- <button class="view-chart-btn" onclick="alert('Chart Viewer functionality coming soon!')">View Daily Chart Image</button> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup for HOLC List -->
+    <div id="holc-list-modal" class="modal-overlay" style="z-index: 1001;">
+        <div class="modal-content" style="max-width: 800px; max-height: 80vh; overflow-y: auto;">
+            <button class="close-btn" onclick="closeHolcModal()">×</button>
+            <h2 id="holc-modal-title" style="margin-bottom: 20px; color: var(--accent-blue);">Nifty 50 HOLC - Minute by Minute</h2>
+            <div id="holc-table-container">
+                <table style="width: 100%; border-collapse: collapse; text-align: center; color: white;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                            <th style="padding: 10px;">Time (IST)</th>
+                            <th style="padding: 10px;">Open</th>
+                            <th style="padding: 10px;">High</th>
+                            <th style="padding: 10px;">Low</th>
+                            <th style="padding: 10px;">Close</th>
+                        </tr>
+                    </thead>
+                    <tbody id="holc-table-body">
+                        <!-- Rows go here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="holc-loading" style="display: none; text-align: center; padding: 20px;">Loading data... (This may take a few seconds)</div>
+        </div>
+    </div>
+
+    <!-- Floating Window for HOLC List -->
+    <div id="holc-floating-window" style="display: none; position: fixed; top: 100px; right: 50px; width: 400px; height: 500px; background: var(--surface-color); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); z-index: 2000; flex-direction: column; overflow: hidden;">
+        <div id="holc-floating-header" style="padding: 15px; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; cursor: grab; user-select: none;">
+            <h3 id="holc-floating-title" style="margin: 0; color: var(--accent-blue); font-size: 1.1rem;">Nifty 50 HOLC</h3>
+            <button onclick="closeHolcFloating()" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; padding: 0; line-height: 1;">×</button>
+        </div>
+        <div id="holc-floating-content" style="flex: 1; overflow-y: auto; padding: 0;">
+            <table style="width: 100%; border-collapse: collapse; text-align: center; color: white; font-size: 0.9rem;">
+                <thead style="position: sticky; top: 0; background: var(--surface-color); z-index: 1;">
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <th style="padding: 10px;">Time</th>
+                        <th style="padding: 10px;">Open</th>
+                        <th style="padding: 10px;">High</th>
+                        <th style="padding: 10px;">Low</th>
+                        <th style="padding: 10px;">Close</th>
+                    </tr>
+                </thead>
+                <tbody id="holc-floating-body">
+                    <!-- Rows go here -->
+                </tbody>
+            </table>
+            <div id="holc-floating-loading" style="display: none; text-align: center; padding: 20px;">Loading data...</div>
+        </div>
+    </div>
+
+    <!-- Chart Modal Popup -->
+    <div id="chart-modal" class="modal-overlay" style="z-index: 1002;">
+        <div class="modal-content" style="max-width: 900px; width: 90%; background: var(--surface-color);">
+            <button class="close-btn" onclick="closeChartModal()">×</button>
+            <h2 id="chart-modal-title" style="margin-bottom: 20px; color: var(--accent-blue);">Nifty 50 Chart</h2>
+            <div id="chart-container" style="width: 100%; height: 500px;"></div>
+            <div id="chart-loading" style="display: none; text-align: center; padding: 20px;">Loading data...</div>
+        </div>
+    </div>
+
+    <script src="JS/database.js"></script>
+</body>
+
+</html>

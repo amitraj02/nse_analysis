@@ -1,0 +1,295 @@
+/* Database Page specific styles */
+body {
+    padding: 2.5rem 1.5rem;
+    overflow-y: auto;
+    /* Allow scrolling for this iframe content */
+}
+
+.calendar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calendar-container h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+.calendar-container p {
+    font-size: 1rem;
+    color: #c084fc;
+    font-family: 'Courier New', Courier, monospace, 'Times New Roman', Times, serif;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.month-card {
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.month-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.month-title {
+    color: var(--accent-blue);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 0.75rem;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.dates-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.date-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.date-cell.empty {
+    background: transparent;
+}
+
+.date-cell.active-date {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+.date-cell.active-date:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--accent-blue);
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    z-index: 10;
+}
+
+/* Make the title container sticky when scrolling */
+.title_fixed_display_position {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    /* Match background so calendar items hide underneath */
+    z-index: 100;
+    /* Ensure it stays above the scrolling calendar */
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    border-color: #c084fc;
+
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    border-radius: 20px;
+}
+
+.title_fixed_display_position div {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    text-align: left;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--accent-red);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--accent-blue);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 1.1rem;
+}
+
+.status-badge {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--accent-green);
+    padding: 0.35rem 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.market-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.stat-box h5 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.stat-box p {
+    margin: 0;
+    /* font-size: 1.1rem;
+    font-weight: 600; */
+    font-size: xx-small;
+    color: var(--text-main);
+}
+
+.chart_btn {
+    background: linear-gradient(135deg, #045212, #c6eb0f);
+    color: #fff;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 10px;
+    font-size: xx-small;
+    /* font-weight: 600; */
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.chart_btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(225, 239, 24, 0.35);
+}
+
+.chart_btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.view-chart-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.view-chart-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.ohlc {
+    font-size: 0.95rem;
+    font-family: monospace;
+    line-height: 1.4;
+    color: var(--text-main);
+    display: inline-block;
+    text-align: left;
+    margin-top: 8px;
+}
+
+/* Highlight dates that have trading data */
+.date-cell.has-data {
+    color: var(--accent-green);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.08);
+}
+
+.date-cell.has-data:hover {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: var(--accent-green);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    color: white;
+}

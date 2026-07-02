@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Code Reference</title>
+    <!-- Modern Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/myCode_Help.css">
+</head>
+<body>
+
+<div class="container" style="position: relative;">
+    <button onclick="window.top.location.href='index.html'" style="position: absolute; left: 20px; top: 20px; background: rgba(255,255,255,0.1); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">🏠 Home</button>
+    <h1>Project Code Dictionary</h1>
+    <p class="subtitle">A quick reference list of the exact HTML tags, JavaScript functions, and CSS properties used across your entire Trading System.</p>
+
+    <!-- HTML Table -->
+    <div class="table-section">
+        <h2 style="color: var(--accent-html);">1. HTML Tags & Attributes Used</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>HTML Tag / Attribute</th>
+                    <th>Where & Why it is used in your project</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code class="html-code">&lt;iframe name="..."&gt;</code></td>
+                    <td>Used in <code>index.html</code> as the "Main Content Area" to load pages without refreshing the master dashboard.</td>
+                </tr>
+                <tr>
+                    <td><code class="html-code">&lt;a target="content_frame"&gt;</code></td>
+                    <td>Used in the sidebar navigation. The <code>target</code> attribute tells the browser to open the link inside the iframe instead of a new tab.</td>
+                </tr>
+                <tr>
+                    <td><code class="html-code">&lt;header&gt;</code>, <code class="html-code">&lt;aside&gt;</code>, <code class="html-code">&lt;main&gt;</code></td>
+                    <td>Semantic tags used to structure the top bar, the side menus, and the center content area across your pages.</td>
+                </tr>
+                <tr>
+                    <td><code class="html-code">&lt;div class="container"&gt;</code></td>
+                    <td>Used as the main wrapper to hold columns (like the left sidebar, center flow, right sidebar in Trade Setup).</td>
+                </tr>
+                <tr>
+                    <td><code class="html-code">&lt;link&gt;</code>, <code class="html-code">&lt;script&gt;</code></td>
+                    <td>Used to connect your external <code>.css</code> and <code>.js</code> files to your HTML pages.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- JavaScript Table -->
+    <div class="table-section">
+        <h2 style="color: var(--accent-js);">2. JavaScript Logic & Functions Used</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>JavaScript Function / Concept</th>
+                    <th>Where & Why it is used in your project</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code class="js-code">document.createElement('div')</code></td>
+                    <td>Used in <code>database.js</code> to generate the 2026 calendar dynamically instead of writing hundreds of lines of HTML by hand.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">.appendChild()</code></td>
+                    <td>Used to take the dynamically created calendar days and actually place them onto the screen.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">new Date(year, month, 1)</code></td>
+                    <td>Used in the calendar to automatically calculate how many days are in a month and what day of the week it starts on.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">document.querySelectorAll()</code></td>
+                    <td>Used to find all flowchart steps or navigation links so we can loop through them.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">element.addEventListener('click')</code></td>
+                    <td>Used to listen for when you click on a step, a menu item, or a calendar date so the code can respond.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">element.classList.add()</code> / <code class="js-code">.remove()</code></td>
+                    <td>Used to temporarily add an <code>active</code> class to highlight the menu item you just clicked.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">setInterval(..., 1000)</code></td>
+                    <td>Used in <code>index.html</code> to update the live digital clock every 1000 milliseconds (1 second).</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">fetch()</code> &amp; <code class="js-code">async/await</code></td>
+                    <td>Used to load massive CSV data files (like NIFTY_HOLC.csv) asynchronously without freezing the UI.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">mousedown</code>, <code class="js-code">mousemove</code></td>
+                    <td>Event listeners used to create the draggable floating window for the minute-by-minute HOLC data.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">new Image().onload</code></td>
+                    <td>Used in <code>analysis.js</code> to silently check if a local image file exists in the background. If successful, it automatically highlights the available Option Strike buttons in green.</td>
+                </tr>
+                <tr>
+                    <td><code class="js-code">window.top.location.href</code></td>
+                    <td>Used on the "Home" buttons to command the main browser window to break out of the <code>iframe</code> and reload the master layout dashboard.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CSS Table -->
+    <div class="table-section">
+        <h2 style="color: var(--accent-css);">3. CSS Features & Layouts Used</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>CSS Feature / Rule</th>
+                    <th>Where & Why it is used in your project</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code class="css-code">position: sticky; top: 0;</code></td>
+                    <td>Used in <code>database.css</code> to lock the "2026 Trading Journal" title to the top of the screen while you scroll down through the months.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">backdrop-filter: blur(16px);</code></td>
+                    <td>Used in the Main Menu (<code>manue.html</code>) to create a beautiful "frosted glass" (glassmorphism) effect behind the dashboard options.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">display: grid;</code></td>
+                    <td>Used heavily to split the screen into 3 columns, and to create the 7-day layout for the calendar.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">overflow: hidden;</code> vs <code class="css-code">auto;</code></td>
+                    <td>Used to prevent the master frame from scrolling (hidden), while allowing the inner iframe pages to scroll normally (auto).</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">z-index: 100;</code></td>
+                    <td>Used to ensure sticky headers or menus float <i>above</i> everything else, so calendar grid items don't overlap them.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">linear-gradient()</code></td>
+                    <td>Used to give the flowchart boxes and the main page titles a beautiful, premium color blend.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">transition:</code>, <code class="css-code">:hover</code></td>
+                    <td>Used to make boxes pop out smoothly and change border colors when you hover your mouse over them.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">:root { --variables }</code></td>
+                    <td>Used to define the dark mode color palette globally so they can be reused easily.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

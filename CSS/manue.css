@@ -1,0 +1,124 @@
+/* Reusing some CSS variables from our style.css, but adding specific layout for the menu */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    flex-direction: column;
+    background: radial-gradient(circle at top, #1e293b, var(--bg-color));
+}
+
+.menu-container {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 3.5rem;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.menu-container h1 {
+    font-size: 2.75rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #f1f5f9, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menu-container>p {
+    color: var(--accent-blue);
+    margin-bottom: 3rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.menu-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-blue);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: bottom;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.menu-card:hover::before {
+    transform: scaleY(1);
+}
+
+.menu-card.card-setup::before {
+    background: var(--accent-green);
+}
+
+.menu-card.card-code::before {
+    background: var(--accent-purple);
+}
+
+.card-icon {
+    font-size: 2.25rem;
+    background: rgba(199, 89, 89, 0.03);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    border: 1px solid rgba(221, 11, 11, 0.02);
+    box-shadow: inset 0 2px 4px rgba(50, 233, 96, 0.2);
+}
+
+.card-content {
+    text-align: left;
+}
+
+.card-content h3 {
+    margin: 0 0 0.35rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    margin: 0;
+    font-size: 10px;
+    color: var(--text-muted);
+}
