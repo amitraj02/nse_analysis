@@ -44,5 +44,5 @@ This file records the chronological sequence of tasks completed on this project.
 - **[Smart Pre-loading]** Engineered a feature utilizing JavaScript's `new Image().onload` API to silently verify if an option's chart image exists locally, automatically highlighting available buttons in green.
 - **[Chart Rendering Fix]** Resolved a LightweightCharts layout bug where a hardcoded height clipped the canvas and hid the bottom time-axis, replacing it with a dynamic `container.clientHeight`.
 - **[Navigation Upgrade]** Inserted a "🏠 Home" shortcut into the header of all inner pages using `window.top.location.href = 'index.html'`, allowing users to instantly jump out of the `iframe` and reset the master dashboard layout.
-
+- create git repo and add project on github
 *(Add new tasks and notes below this line as you continue working)*
