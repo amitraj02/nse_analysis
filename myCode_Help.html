@@ -138,6 +138,10 @@
                     <td><code class="js-code">window.location.pathname</code></td>
                     <td>Used in <code>index.js</code> to dynamically read the current URL in the browser and automatically highlight the correct sidebar menu item for any page.</td>
                 </tr>
+                <tr>
+                    <td><code class="js-code">Python Metadata Generation</code></td>
+                    <td>A backend preprocessing technique. We created <code>generate_meta.py</code> to crunch 48MB CSV datasets and output a lightweight JSON file, preventing the browser from freezing.</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -184,6 +188,14 @@
                 <tr>
                     <td><code class="css-code">:root { --variables }</code></td>
                     <td>Used to define the dark mode color palette globally so they can be reused easily.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">display: flex; flex-direction: row;</code></td>
+                    <td>Extensively used in <code>analysis.html</code> to create the horizontal grid rows for the Options Chain (CALL, STRIKES, PUT) and to flawlessly position the Chart and Option Images side-by-side.</td>
+                </tr>
+                <tr>
+                    <td><code class="css-code">height: 300px; overflow-y: auto;</code></td>
+                    <td>Used in the Analysis layout to lock a container's size and safely enable internal vertical scrolling when the grid content overflows.</td>
                 </tr>
             </tbody>
         </table>
