@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="CSS/analysis_2026.css">
     <script src="https://unpkg.com/lightweight-charts@4.1.1/dist/lightweight-charts.standalone.production.js"></script>
     <style>
-
         .header {
             display: flex;
             justify-content: space-between;
@@ -62,8 +61,8 @@
 
         .strikes-list {
             display: flex;
-            flex-direction: column;
-            gap: 5px;
+            flex-direction: row;
+            gap: 1px;
             align-items: center;
             /* justify-content: flex-start; */
             flex-wrap: wrap;
@@ -81,7 +80,7 @@
     <!-- 1. Top Header -->
     <header class="top-header">
         <div class="header-logo">
-            <span>⚡</span> QUANTUM TRADING
+            <span>⚡</span> QUANTUM TRADING :Analysis
         </div>
         <div class="header-controls">
             <span id="live-time">Loading Time...</span>
@@ -115,93 +114,114 @@
 
         <!-- 3. Main Body -->
         <main class="main-body" style="padding: 10px;">
-    <section>
-        <div class="analysis-container page-container">
-            <div class="header">
-                <h1 id="page-title" style="font-size: medium; font-weight: 800; margin: 0; color: var(--accent-blue);">
-                    Nifty
-                    Analysis</h1>
-                <div>
-                    <b>Range of Nifty</b>
-                    <p id="analysis-nifty-range" style="font-size: 10px; font-weight: bold; margin: 0;">Loading...</p>
-                </div>
-                <div>
-
-                    <button class="back-btn" onclick="window.location.href='analysis_2026.html'">← Back</button>
-                </div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <!-- Main Content Row -->
-                <div style="display: flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
-
-                    <!-- Left: Options Chain -->
-                    <div
-                        style="display: flex; flex-direction: row; flex: 1; min-width: 350px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden;max-height: 300px;">
-                        <!-- CALL -->
-                        <div
-                            style="flex: 1; display: flex; flex-direction: column; text-align: center; border-right: 1px solid rgba(255,255,255,0.1);">
-                            <div
-                                style="background: rgba(46, 204, 113, 0.2); color: #2ecc71; padding: 10px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                CALL</div>
-                            <div style="padding: 10px; display: flex; flex-direction: column; gap: 8px;">
-                                <div class="call_option" id="strike_third_itm"><button> call image</button> </div>
-                                <div class="call_option" id="strike_two_itm"><button>call image</button></div>
-                                <div class="call_option" id="strike_one_itm"><button>call image</button></div>
-                                <div class="call_option" id="strike_ATM_itm"><button>call image</button></div>
-                                <div class="call_option" id="strike_one_otm"><button>call image</button></div>
-                                <div class="call_option" id="strike_two_otm"><button>call image</button></div>
-                                <div class="call_option" id="strike_three_otm"><button>call image</button></div>
-                            </div>
+            <section>
+                <div   style="height: 300px; overflow-y: auto; margin: 15px auto; padding: 20px; background: var(--surface-color); border-radius: 12px; border: 1px solid #2ecc71; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); display: flex; flex-direction: column; gap: 15px;">
+                    <div class="header">
+                        <h1 id="page-title"
+                            style="font-size: medium; padding: 0px; font-weight: 800; margin: 0; color: var(--accent-blue);">
+                            Nifty
+                            Analysis</h1>
+                        <div>
+                            <b>Range of Nifty</b>
+                            <p id="analysis-nifty-range" style="font-size: 10px; font-weight: bold; margin: 0;">
+                                Loading...</p>
                         </div>
+                        <div>
 
-                        <!-- STRIKES -->
-                        <div
-                            style="flex: 1; display: flex; flex-direction: column; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
-                            <div
-                                style="background: rgba(52, 152, 219, 0.2); color: #3498db; padding: 10px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                Strikes (± 3)</div>
-                            <div style="padding: 10px; display: flex; justify-content: center;">
-                                <ul id="analysis-strikes-list" class="strikes-list"
-                                    style="height: auto; min-height: 200px; width: 100%; background: transparent;">
-                                    <li>Loading...</li>
-                                </ul>
-                            </div>
+                            <button class="back-btn" onclick="window.location.href='analysis_2026.html'">← Back</button>
                         </div>
-
-                        <!-- PUT -->
-                        <div style="flex: 1; display: flex; flex-direction: column; text-align: center;">
-                            <div
-                                style="background: rgba(231, 76, 60, 0.2); color: #e74c3c; padding: 10px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                                PUT</div>
-                            <div style="padding: 10px; display: flex; flex-direction: column; gap: 8px;">
-                                <div class="put_option" id="strike_third_itm"><button>put image</button></div>
-                                <div class="put_option" id="strike_two_itm"><button>put image</button></div>
-                                <div class="put_option" id="strike_one_itm"><button>put image</button></div>
-                                <div class="put_option" id="strike_ATM_itm"><button>put image</button></div>
-                                <div class="put_option" id="strike_one_otm"><button>put image</button></div>
-                                <div class="put_option" id="strike_two_otm"><button>put image</button></div>
-                                <div class="put_option" id="strike_three_otm"><button>put image</button></div>
-                            </div>
-                        </div>
-
-                        <!-- <div style="display: flex; flex-direction: row; flex: 1; min-width: 350px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden;max-height: 300px;">
-                      rest part of column
-                    </div> -->
                     </div>
-                    <!-- Right: Chart Area -->
-                    <div style="flex: 2; min-width: 300px; display: flex; flex-direction: column; gap: 15px;">
+
+                    <div style="display: flex; flex-direction:row; gap: 0px;">
+                        <!-- Main Content Row -->
+                        <div style="display: flex; flex-direction: row; gap: 10px; flex-wrap: wrap;">
+
+                            <!-- Left: Options Chain -->
+                            <div
+                                style="display: flex; flex-direction: column; flex: 1; min-width: 350px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; min-height: 200px;">
+
+                                <!-- CALL ROW -->
+                                <div
+                                    style="flex: 1; display: flex; flex-direction: row; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <div
+                                        style="width: 100px; background: rgba(46, 204, 113, 0.2); color: #2ecc71; padding: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(255,255,255,0.1);">
+                                        CALL
+                                    </div>
+                                    <div
+                                        style="padding: 10px; display: flex; flex-direction: row; gap: 8px; flex: 1; justify-content: space-evenly; align-items: center; overflow-x: auto;">
+                                        <div class="call_option" id="strike_third_itm"><button>call image</button></div>
+                                        <div class="call_option" id="strike_two_itm"><button>call image</button></div>
+                                        <div class="call_option" id="strike_one_itm"><button>call image</button></div>
+                                        <div class="call_option" id="strike_ATM_itm"><button>call image</button></div>
+                                        <div class="call_option" id="strike_one_otm"><button>call image</button></div>
+                                        <div class="call_option" id="strike_two_otm"><button>call image</button></div>
+                                        <div class="call_option" id="strike_three_otm"><button>call image</button></div>
+                                    </div>
+                                </div>
+
+                                <!-- STRIKES ROW -->
+                                <div
+                                    style="flex: 1; display: flex; flex-direction: row; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
+                                    <div
+                                        style="width: 100px; background: rgba(52, 152, 219, 0.2); color: #3498db; padding: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(255,255,255,0.1);">
+                                        STRIKES
+                                    </div>
+                                    <div
+                                        style="padding: 10px; display: flex; flex-direction: row; flex: 1; justify-content: center; align-items: center;">
+                                        <ul id="analysis-strikes-list" class="strikes-list"
+                                            style="margin: 0; padding: 0; display: flex; flex-direction: row; gap: 8px; list-style: none; width: 100%; justify-content: space-evenly;">
+                                            <li>Loading...</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- PUT ROW -->
+                                <div style="flex: 1; display: flex; flex-direction: row;">
+                                    <div
+                                        style="width: 100px; background: rgba(231, 76, 60, 0.2); color: #e74c3c; padding: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(255,255,255,0.1);">
+                                        PUT
+                                    </div>
+                                    <div
+                                        style="padding: 10px; display: flex; flex-direction: row; gap: 8px; flex: 1; justify-content: space-evenly; align-items: center; overflow-x: auto;">
+                                        <div class="put_option" id="strike_third_itm"><button>put image</button></div>
+                                        <div class="put_option" id="strike_two_itm"><button>put image</button></div>
+                                        <div class="put_option" id="strike_one_itm"><button>put image</button></div>
+                                        <div class="put_option" id="strike_ATM_itm"><button>put image</button></div>
+                                        <div class="put_option" id="strike_one_otm"><button>put image</button></div>
+                                        <div class="put_option" id="strike_two_otm"><button>put image</button></div>
+                                        <div class="put_option" id="strike_three_otm"><button>put image</button></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div>
+            <button class="chart_btn" onclick="displayNiftyChart()">Show Chart</button>
+
+            <div id="chart-container" style="width: 80%; height: 400px; display: none;"></div>
+            <div id="chart-loading" style="display: none; text-align: center; padding: 20px;">Loading data...</div>
+        </div> -->
+                </div>
+            </section>
+            <section>
+                <div class="options-image-container page-container"
+                    style="min-height: 500px; height: auto; margin: 10px auto; background: var(--surface-color); border-radius: 12px; padding: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); display: flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
+
+                    <!-- Left: Nifty Price Chart -->
+                    <div style="flex: 1; min-width: 400px; display: flex; flex-direction: column; height: 100%;">
                         <div
-                            style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px;">
+                            style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; display: flex; flex-direction: column; flex: 1;">
                             <div
                                 style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                <h3 style="margin: 0; color: var(--accent-blue);">Price Chart</h3>
+                                <h3 style="margin: 0; color: var(--accent-blue);">Nifty Price Chart</h3>
                                 <button class="chart_btn" onclick="displayNiftyChart()">Show Chart</button>
                             </div>
                             <div class="chart-area"
-                                style="width: 100%; background: #1E222D; border-radius: 8px; overflow: hidden; min-height: 400px; position: relative;">
+                                style="width: 100%; flex: 1; background: #1E222D; border-radius: 8px; overflow: hidden; min-height: 400px; position: relative;">
                                 <div id="chart-container"
-                                    style="width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                                    style="width: 100%; height: 100%; min-height: 400px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                                     Click "Show Chart" to load candlestick data
                                 </div>
                                 <div id="chart-loading"
@@ -210,59 +230,34 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div
-                            style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 15px; color: var(--text-muted);">
-                            <strong>Extra Info:</strong> Chart data displays Nifty 50 movements for the selected date.
-                        </div> -->
                     </div>
+
+                    <!-- Right: Option Images (Call & Put) -->
+                    <div style="flex: 1; min-width: 400px; display: flex; flex-direction: column; gap: 20px;">
+                        <!-- Call Image -->
+                        <div
+                            style="flex: 1; min-height: 200px; border: 1px dashed rgba(46, 204, 113, 0.5); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(46, 204, 113, 0.05); overflow: hidden;">
+                            <img id="call-image-display" src=""
+                                style="width: 100%; height: 100%; max-height: 250px; object-fit: contain; display: none;"
+                                alt="Selected strike call image">
+                            <span id="call-image-placeholder" style="color: #2ecc71; font-weight: bold;">Call Option
+                                Chart</span>
+                        </div>
+
+                        <!-- Put Image -->
+                        <div
+                            style="flex: 1; min-height: 200px; border: 1px dashed rgba(231, 76, 60, 0.5); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(231, 76, 60, 0.05); overflow: hidden;">
+                            <img id="put-image-display" src=""
+                                style="width: 100%; height: 100%; max-height: 250px; object-fit: contain; display: none;"
+                                alt="Selected strike put image">
+                            <span id="put-image-placeholder" style="color: #e74c3c; font-weight: bold;">Put Option
+                                Chart</span>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-
-            <!-- <div>
-            <button class="chart_btn" onclick="displayNiftyChart()">Show Chart</button>
-
-            <div id="chart-container" style="width: 80%; height: 400px; display: none;"></div>
-            <div id="chart-loading" style="display: none; text-align: center; padding: 20px;">Loading data...</div>
-        </div> -->
-        </div>
-    </section>
-    <section>
-        <div class="options-image-container"
-            style="max-width: 1400px; min-height: 500px; height: auto; margin: 20px auto; background: var(--surface-color); border-radius: 12px; padding: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); display: flex; flex-direction: column; gap: 20px;">
-            <!-- <h2 style="color: var(--accent-blue); margin-top: 0; margin-bottom: 5px; font-size: 1rem; text-align: center;">Options Chart Images</h2> -->
-
-            <!-- Top Image (100% width) -->
-            <!-- <div style="width: 100%; min-height: 15px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); overflow: hidden;"> -->
-            <!-- <img src="option_chart_image/full_image.png" style="width: 100%; height: auto; object-fit: contain;" alt="Selected date image"> -->
-            <span style="color:white; font-size: small;">Selected date image above call & put display here</span>
-            <!-- </div> -->
-
-            <!-- Bottom Images (50% / 50%) -->
-            <div style="display: flex; flex-direction: row; gap: 20px; width: 100%; flex-wrap: wrap;">
-
-                <!-- Call Image -->
-                <div
-                    style="flex: 1; min-width: 300px; min-height: 250px; border: 1px dashed rgba(46, 204, 113, 0.5); border-radius: 8px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(46, 204, 113, 0.05); overflow: hidden;">
-                    <img id="call-image-display" src=""
-                        style="width: 100%; height: auto; object-fit: contain; display: none;"
-                        alt="Selected strike call image">
-                    <span id="call-image-placeholder" style="color: #2ecc71;">Selected strike call image (50%)</span>
-                </div>
-
-                <!-- Put Image -->
-                <div
-                    style="flex: 1; min-width: 300px; min-height: 250px; border: 1px dashed rgba(231, 76, 60, 0.5); border-radius: 8px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(231, 76, 60, 0.05); overflow: hidden;">
-                    <img id="put-image-display" src=""
-                        style="width: 100%; height: auto; object-fit: contain; display: none;"
-                        alt="Selected strike put image">
-                    <span id="put-image-placeholder" style="color: #e74c3c;">Selected strike put image (50%)</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <script src="JS/analysis.js"></script>
+            </section>
+            <script src="JS/analysis.js"></script>
         </main>
     </div>
 
