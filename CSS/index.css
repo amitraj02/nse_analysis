@@ -102,6 +102,7 @@ body {
     flex: 1;
     background: var(--bg-color);
     position: relative;
+    overflow-y: auto;
 }
 
 iframe[name="content_frame"] {

@@ -1,11 +1,13 @@
-function setActive(clickedElement) {
-    // Remove 'active' class from all nav items
+document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
+        const href = item.getAttribute('href');
+        if (href === currentPath || (currentPath === 'index.html' && href === 'manue.html')) {
+            item.classList.add('active');
+        }
     });
-    // Add 'active' class to the clicked element
-    clickedElement.classList.add('active');
-}
+});
 
 // Live Clock for the header
 function updateTime() {

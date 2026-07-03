@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading System - Master Frame</title>
+    <title>Trading Hub - Main Menu</title>
+    <!-- Modern Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/manue.css">
     <link rel="stylesheet" href="CSS/index.css">
 </head>
 
 <body>
-
     <!-- 1. Top Header -->
     <header class="top-header">
         <div class="header-logo">
@@ -31,28 +32,57 @@
         <aside class="left-sidebar">
             <div class="sidebar-title">Navigation</div>
 
-            <a href="manue.html" target="content_frame" class="nav-item active" onclick="setActive(this)">
+            <a href="manue.html" class="nav-item">
                 <span class="nav-icon">🏠</span> Home Dashboard
             </a>
 
-            <a href="Trade_Setup.html" target="content_frame" class="nav-item" onclick="setActive(this)">
+            <a href="Trade_Setup.html" class="nav-item">
                 <span class="nav-icon">📊</span> Trade Setup
             </a>
 
-            <a href="myCode_Help.html" target="content_frame" class="nav-item" onclick="setActive(this)">
+            <a href="myCode_Help.html" class="nav-item">
                 <span class="nav-icon">💻</span> Code Dictionary
             </a>
-            <a href="Data_Base.html" target="content_frame" class="nav-item" onclick="setActive(this)">
-                <span class="nav-icon">💾</span> DataBase
+            <a href="analysis_2026.html" class="nav-item">
+                <span class="nav-icon">💾</span> DataBase 26
             </a>
-
-            <!-- You can add more links here as your project grows -->
         </aside>
 
-        <!-- 3. Main Body (Iframe) -->
+        <!-- 3. Main Body -->
         <main class="main-body">
-            <!-- This iframe loads the pages clicked in the sidebar without refreshing the master frame -->
-            <iframe name="content_frame" src="manue.html" title="Main Content Area"></iframe>
+    <!-- 2. Left Side Menu -->
+
+    <div class="menu-container page-container">
+        <h1>Trading System Hub</h1>
+        <p>Select a module</p>
+
+        <div class="menu-grid">
+            <a href="Trade_Setup.html" class="menu-card card-setup">
+                <div class="card-icon">📊</div>
+                <div class="card-content">
+                    <h3>Trade Setup Flowchart</h3>
+                    <p>Interactive index options decision making flow</p>
+                </div>
+            </a>
+
+            <a href="myCode_Help.html" class="menu-card card-code">
+                <div class="card-icon">💻</div>
+                <div class="card-content">
+                    <h3>Project Code Dictionary</h3>
+                    <p>Reference guide for HTML, CSS, and JS components</p>
+                </div>
+            </a>
+
+            <a href="todo.md" class="menu-card">
+                <div class="card-icon">📝</div>
+                <div class="card-content">
+                    <h3>Task Tracker</h3>
+                    <p>Chronological log of development tasks</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
         </main>
 
     </div>

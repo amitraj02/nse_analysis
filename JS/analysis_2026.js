@@ -54,18 +54,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         for (let day = 1; day <= daysInMonth; day++) {
             const dateCell = document.createElement('a'); // Make it an anchor link
             dateCell.className = 'date-cell active-date';
-            dateCell.innerText = day;
+            
+            let dayText = document.createElement('span');
+            dayText.innerText = day;
+            dateCell.appendChild(dayText);
 
             // Format date string for the placeholder link (e.g., "2026-01-15")
             const formattedMonth = String(monthIndex + 1).padStart(2, '0');
             const formattedDay = String(day).padStart(2, '0');
             const dateStr = `${year}-${formattedMonth}-${formattedDay}`;
 
-            // Check if we have trading data for this date
-            const monthsShort = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-            const csvDateStr = `${formattedDay}-${monthsShort[monthIndex]}-${year}`;
-            if (niftyData[csvDateStr]) {
-                dateCell.classList.add('has-data');
+            // Check meta data
+            const meta = window.calendarMeta ? window.calendarMeta[dateStr] : null;
+
+            if (meta) {
+                if (meta.isTradingDay) {
+                    dateCell.classList.add('trading-day');
+                } else {
+                    dateCell.classList.add('holiday');
+                }
+                
+                // Indicators
+                if (meta.hasHOLC || meta.hasOptionImages) {
+                    const indContainer = document.createElement('div');
+                    indContainer.className = 'indicators';
+                    if (meta.hasHOLC) {
+                        const d1 = document.createElement('div');
+                        d1.className = 'dot holc';
+                        d1.title = 'Nifty Minute HOLC Data Available';
+                        indContainer.appendChild(d1);
+                    }
+                    if (meta.hasOptionImages) {
+                        const d2 = document.createElement('div');
+                        d2.className = 'dot img';
+                        d2.title = 'Option Chart Images Available';
+                        indContainer.appendChild(d2);
+                    }
+                    dateCell.appendChild(indContainer);
+                }
+            } else {
+                // If not in meta, assume it's a holiday/weekend
+                dateCell.classList.add('holiday');
             }
 
             // Clicking opens a placeholder action. You can link actual images here later!
@@ -272,13 +301,21 @@ async function displayNiftyHOLClist() {
 // Function to fetch and parse CSV
 async function loadCSVData() {
     try {
-        const [niftyRes, bankRes] = await Promise.all([
+        const [niftyRes, bankRes, metaRes] = await Promise.all([
             fetch('index_HOLC_data/NIFTY_2026.csv'),
-            fetch('index_HOLC_data/NIFTY_BANK_2026.csv')
+            fetch('index_HOLC_data/NIFTY_BANK_2026.csv'),
+            fetch('calendar_meta.json')
         ]);
 
         const niftyText = await niftyRes.text();
         const bankText = await bankRes.text();
+        
+        try {
+            window.calendarMeta = await metaRes.json();
+        } catch(e) {
+            console.error("Meta missing or invalid", e);
+            window.calendarMeta = {};
+        }
 
         niftyData = parseCSV(niftyText);
         bankNiftyData = parseCSV(bankText);

@@ -6,12 +6,49 @@
     <title>Project Code Reference</title>
     <!-- Modern Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/myCode_Help.css">
+    <link rel="stylesheet" href="CSS/index.css">
 </head>
 <body>
+    <!-- 1. Top Header -->
+    <header class="top-header">
+        <div class="header-logo">
+            <span>⚡</span> QUANTUM TRADING
+        </div>
+        <div class="header-controls">
+            <span id="live-time">Loading Time...</span>
+            <span
+                style="background: rgba(255,255,255,0.1); padding: 0.4rem 1rem; border-radius: 20px; color: var(--text-main);">Demo
+                Mode</span>
+        </div>
+    </header>
 
-<div class="container" style="position: relative;">
-    <button onclick="window.top.location.href='index.html'" style="position: absolute; left: 20px; top: 20px; background: rgba(255,255,255,0.1); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.3s;" onmouseover="this.style.background='rgba(59, 130, 246, 0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">🏠 Home</button>
+    <div class="layout-middle">
+
+        <!-- 2. Left Side Menu -->
+        <aside class="left-sidebar">
+            <div class="sidebar-title">Navigation</div>
+
+            <a href="manue.html" class="nav-item">
+                <span class="nav-icon">🏠</span> Home Dashboard
+            </a>
+
+            <a href="Trade_Setup.html" class="nav-item">
+                <span class="nav-icon">📊</span> Trade Setup
+            </a>
+
+            <a href="myCode_Help.html" class="nav-item">
+                <span class="nav-icon">💻</span> Code Dictionary
+            </a>
+            <a href="analysis_2026.html" class="nav-item">
+                <span class="nav-icon">💾</span> DataBase
+            </a>
+        </aside>
+
+        <!-- 3. Main Body -->
+        <main class="main-body" style="padding: 2rem;">
+<div class="page-container">
     <h1>Project Code Dictionary</h1>
     <p class="subtitle">A quick reference list of the exact HTML tags, JavaScript functions, and CSS properties used across your entire Trading System.</p>
 
@@ -27,20 +64,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><code class="html-code">&lt;iframe name="..."&gt;</code></td>
-                    <td>Used in <code>index.html</code> as the "Main Content Area" to load pages without refreshing the master dashboard.</td>
+                    <td><code class="html-code">&lt;div class="page-container"&gt;</code></td>
+                    <td>Universal wrapper class to give every page an identical height, width, font size, and premium background aesthetic.</td>
                 </tr>
                 <tr>
-                    <td><code class="html-code">&lt;a target="content_frame"&gt;</code></td>
-                    <td>Used in the sidebar navigation. The <code>target</code> attribute tells the browser to open the link inside the iframe instead of a new tab.</td>
+                    <td><code class="html-code">&lt;div class="trade-container"&gt;</code></td>
+                    <td>Specific 3-column grid container used explicitly for the Trade Setup flowchart to prevent CSS layout conflicts on other pages.</td>
                 </tr>
                 <tr>
                     <td><code class="html-code">&lt;header&gt;</code>, <code class="html-code">&lt;aside&gt;</code>, <code class="html-code">&lt;main&gt;</code></td>
-                    <td>Semantic tags used to structure the top bar, the side menus, and the center content area across your pages.</td>
-                </tr>
-                <tr>
-                    <td><code class="html-code">&lt;div class="container"&gt;</code></td>
-                    <td>Used as the main wrapper to hold columns (like the left sidebar, center flow, right sidebar in Trade Setup).</td>
+                    <td>Semantic tags injected natively into every HTML file to create the standard Multi-Page Application layout.</td>
                 </tr>
                 <tr>
                     <td><code class="html-code">&lt;link&gt;</code>, <code class="html-code">&lt;script&gt;</code></td>
@@ -63,7 +96,7 @@
             <tbody>
                 <tr>
                     <td><code class="js-code">document.createElement('div')</code></td>
-                    <td>Used in <code>database.js</code> to generate the 2026 calendar dynamically instead of writing hundreds of lines of HTML by hand.</td>
+                    <td>Used in <code>analysis_2026.js</code> to generate the 2026 calendar dynamically instead of writing hundreds of lines of HTML by hand.</td>
                 </tr>
                 <tr>
                     <td><code class="js-code">.appendChild()</code></td>
@@ -102,8 +135,8 @@
                     <td>Used in <code>analysis.js</code> to silently check if a local image file exists in the background. If successful, it automatically highlights the available Option Strike buttons in green.</td>
                 </tr>
                 <tr>
-                    <td><code class="js-code">window.top.location.href</code></td>
-                    <td>Used on the "Home" buttons to command the main browser window to break out of the <code>iframe</code> and reload the master layout dashboard.</td>
+                    <td><code class="js-code">window.location.pathname</code></td>
+                    <td>Used in <code>index.js</code> to dynamically read the current URL in the browser and automatically highlight the correct sidebar menu item for any page.</td>
                 </tr>
             </tbody>
         </table>
@@ -122,7 +155,7 @@
             <tbody>
                 <tr>
                     <td><code class="css-code">position: sticky; top: 0;</code></td>
-                    <td>Used in <code>database.css</code> to lock the "2026 Trading Journal" title to the top of the screen while you scroll down through the months.</td>
+                    <td>Used in <code>analysis_2026.css</code> to lock the "2026 Trading Journal" title to the top of the screen while you scroll down through the months.</td>
                 </tr>
                 <tr>
                     <td><code class="css-code">backdrop-filter: blur(16px);</code></td>
@@ -133,8 +166,8 @@
                     <td>Used heavily to split the screen into 3 columns, and to create the 7-day layout for the calendar.</td>
                 </tr>
                 <tr>
-                    <td><code class="css-code">overflow: hidden;</code> vs <code class="css-code">auto;</code></td>
-                    <td>Used to prevent the master frame from scrolling (hidden), while allowing the inner iframe pages to scroll normally (auto).</td>
+                    <td><code class="css-code">overflow-y: auto;</code></td>
+                    <td>Applied to the <code>.main-body</code> container to ensure long pages can scroll vertically seamlessly within the unified layout structure.</td>
                 </tr>
                 <tr>
                     <td><code class="css-code">z-index: 100;</code></td>
@@ -157,6 +190,17 @@
     </div>
 
 </div>
+        </main>
+    </div>
 
+    <!-- 4. Footer -->
+    <footer class="footer">
+        <div style="display: flex; align-items: center;">
+            <span class="status-dot"></span> All Systems Operational &nbsp;|&nbsp; Local Environment
+        </div>
+    </footer>
+
+    <!-- Small script to handle active states on the sidebar and live clock -->
+    <script src="JS/index.js"></script>
 </body>
 </html>
