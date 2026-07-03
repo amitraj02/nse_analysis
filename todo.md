@@ -45,4 +45,15 @@ This file records the chronological sequence of tasks completed on this project.
 - **[Chart Rendering Fix]** Resolved a LightweightCharts layout bug where a hardcoded height clipped the canvas and hid the bottom time-axis, replacing it with a dynamic `container.clientHeight`.
 - **[Navigation Upgrade]** Inserted a "🏠 Home" shortcut into the header of all inner pages using `window.top.location.href = 'index.html'`, allowing users to instantly jump out of the `iframe` and reset the master dashboard layout.
 - create git repo and add project on github
+- **[File Renaming]** Renamed `Data_Base.html` to `analysis_2026.html` and updated corresponding CSS/JS files and all project links to maintain consistency.
+- **[Layout Architecture Upgrade]** Replaced the `iframe`-based SPA model with a robust Multi-Page Application (MPA) layout. Injected the native Root Layout (Top Header, Left Sidebar Menu, Main Content, Footer) directly into `manue.html`, `Trade_Setup.html`, `myCode_Help.html`, `analysis_2026.html`, and `analysis.html`.
+- **[Smart Navigation]** Updated `JS/index.js` with path-based detection to automatically highlight the active sidebar menu item based on `window.location.pathname`.
+- **[Design System Standardization]** Created a universal `.page-container` class in `style.css` (max-width: 1400px) and systematically stripped out conflicting inline styles, `body` overrides, and duplicate `:root` variables across all individual CSS files. Every page now shares identical width, height boundaries, Inter font, and premium dark theme styling.
+- **[CSS Conflict Resolution]** Isolated a 3-column grid structure used by the Trade Setup by renaming a generic `.container` class to `.trade-container`, instantly fixing grid-stacking bugs on `myCode_Help.html`.
+- **[Data Optimization]** Created a local Python script (`generate_meta.py`) to process large 48MB CSV datasets and option images, outputting a lightweight `calendar_meta.json` to eliminate browser freezing.
+- **[Visual Calendar]** Updated `analysis_2026.js` and `analysis_2026.css` to consume the metadata JSON, injecting blue/purple indicator dots to visually represent available HOLC data and Option Images directly on the calendar cells.
+- **[Calendar Legend]** Added a sleek, pill-shaped color legend to the header of the 2026 Database page.
+- **[Analysis Layout]** Rearranged `analysis.html` into a cleaner flexbox layout. Converted the Options Chain into horizontal stacked rows (CALL, STRIKES, PUT). Adjusted the bottom section into a 50/50 side-by-side flex layout for the Nifty Price Chart and vertically stacked Option Images.
+- **[UI Fixes]** Resolved overlapping UI bugs in `analysis.html` by assigning proper `height: 300px` and `overflow-y: auto` to scrolling grid containers, while maintaining consistent padding, margins, and border radii across flex sections.
+
 *(Add new tasks and notes below this line as you continue working)*

@@ -46,7 +46,7 @@ header p {
     letter-spacing: 1px;
 }
 
-.container {
+.trade-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -250,10 +250,33 @@ header p {
 }
 
 @media (max-width: 1024px) {
-    .container {
+    .trade-container {
         grid-template-columns: 1fr;
     }
     .sidebar-box {
         margin-bottom: 1rem;
     }
+}
+
+/* Standardized Page Layout */
+.page-container {
+    max-width: 1400px;
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    margin: 0 auto;
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.page-container > h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }

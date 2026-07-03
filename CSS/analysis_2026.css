@@ -1,15 +1,4 @@
 /* Database Page specific styles */
-body {
-    padding: 2.5rem 1.5rem;
-    overflow-y: auto;
-    /* Allow scrolling for this iframe content */
-}
-
-.calendar-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    text-align: center;
-}
 
 .calendar-container h1 {
     font-size: 2rem;
@@ -79,8 +68,10 @@ body {
 }
 
 .date-cell {
+    position: relative;
     aspect-ratio: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
@@ -126,10 +117,42 @@ body {
     border-radius: 20px;
 }
 
-.title_fixed_display_position div {
-    margin: 0;
-    padding: 0;
-    height: 50px;
+/* Legend Styles */
+.calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 0.8rem 0;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legend-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.legend-box.trading-day {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid var(--accent-green);
+}
+
+.legend-box.holiday {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Modal Styles */
@@ -280,16 +303,43 @@ body {
     margin-top: 8px;
 }
 
-/* Highlight dates that have trading data */
-.date-cell.has-data {
+/* Date States & Visual Indicators */
+.date-cell.holiday {
+    opacity: 0.35;
+}
+
+.date-cell.trading-day {
     color: var(--accent-green);
     border: 1px solid rgba(16, 185, 129, 0.4);
     background: rgba(16, 185, 129, 0.08);
 }
 
-.date-cell.has-data:hover {
+.date-cell.trading-day:hover {
     background: rgba(16, 185, 129, 0.25);
     border-color: var(--accent-green);
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
     color: white;
+}
+
+.indicators {
+    display: flex;
+    gap: 4px;
+    position: absolute;
+    bottom: 6px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.dot.holc {
+    background-color: var(--accent-blue);
+    box-shadow: 0 0 6px var(--accent-blue);
+}
+
+.dot.img {
+    background-color: var(--accent-purple);
+    box-shadow: 0 0 6px var(--accent-purple);
 }

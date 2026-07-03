@@ -1,25 +1,5 @@
 /* Reusing some CSS variables from our style.css, but adding specific layout for the menu */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 2rem;
-    flex-direction: column;
-    background: radial-gradient(circle at top, #1e293b, var(--bg-color));
-}
-
 .menu-container {
-    background: rgba(30, 41, 59, 0.4);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 3.5rem;
-    width: 100%;
-    max-width: 650px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     text-align: center;
 }
 
